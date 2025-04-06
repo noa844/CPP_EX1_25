@@ -20,7 +20,11 @@ namespace graph {
         int getSize() const;
         Node* getNodes() const;
         Neighbor* getAdjList(int vertex) const;
+        int getWeight(int src, int dest) const;
         
+        
+        
+        bool hasNegativeEdge() const;// Returns true if there is at least one edge with a negative weight in the graph.
         bool isValidIndex(int index) const;
         void addEdge(int src, int dest, int weight = 1);
         void removeEdge(int src, int dest);

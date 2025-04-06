@@ -1,22 +1,41 @@
-# compiler
+# Compiler settings
 CXX = g++
+CXXFLAGS = -Wall -g -I./src
 
+# Source files for the main executable
+SRC = main.cpp $(wildcard src/Graph/*.cpp) $(wildcard src/*.cpp) $(wildcard datastructures/*.cpp)
 
-CXXFLAGS = -Wall -I./src
+# Name of the main executable
+EXEC = prog
 
+# Source files for unit tests (if any; adjust path/file names accordingly)
+TESTSRC = tests/test.cpp $(wildcard src/Graph/*.cpp) $(wildcard src/*.cpp) $(wildcard datastructures/*.cpp)
 
-SRC = main.cpp src/Graph/Graph.cpp src/Algorithms.cpp datastructures/Queue.cpp datastructures/Stack.cpp
+TEST_EXEC = test_prog
 
-# Nom de l'exécutable
-EXEC = myProg
-
-# Règle par défaut
+# Default target: build the main executable
 all: $(EXEC)
 
-# Comment construire l'exécutable
+# Build the main executable
 $(EXEC): $(SRC)
 	$(CXX) $(CXXFLAGS) -o $@ $(SRC)
 
-# Nettoyage
+# Run the demonstration (Main)
+Main: $(EXEC)
+	./$(EXEC)
+
+# Build the unit test executable
+$(TEST_EXEC): $(TESTSRC)
+	$(CXX) $(CXXFLAGS) -o $@ $(TESTSRC)
+
+# Run unit tests
+test: $(TEST_EXEC)
+	./$(TEST_EXEC)
+
+# Run valgrind on the main executable
+valgrind: $(EXEC)
+	valgrind --leak-check=full ./$(EXEC)
+
+# Clean up all generated executables
 clean:
-	rm -f $(EXEC)
+	rm -f $(EXEC) $(TEST_EXEC)

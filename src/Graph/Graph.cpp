@@ -44,6 +44,40 @@ namespace graph {
         return nodes[v].adjList;
     }
 
+    int Graph::getWeight(int src, int dest) const {
+        if (!isValidIndex(src) || !isValidIndex(dest)) {
+            throw runtime_error("Invalid index");
+        }
+        Neighbor* current = nodes[src].adjList;
+
+        while (current != nullptr) {
+            if (current->dest == dest) {
+                return current->weight;
+            }
+            current = current->next;
+        }
+    
+     
+        throw runtime_error("There is no edge");
+        
+    }
+
+    bool Graph::hasNegativeEdge() const{
+        for (int i = 0; i < V; i++) {
+            Neighbor* current = nodes[i].adjList;
+            while (current != nullptr) {
+                if (current->weight < 0) {
+                    return true;
+                }
+                current = current->next;
+            }
+        }
+        return false;
+
+    }
+
+    
+
     bool Graph::isValidIndex(int index) const {
         return (index >= 0 && index < V);
     }
@@ -90,6 +124,8 @@ namespace graph {
         //undirected edge.
         addNeighbor(src, dest, weight);
         addNeighbor(dest, src, weight);
+        cout << "addEdge: " << src << " <-> " << dest << " (weight: " << weight << ")" << endl;
+
     }
     // Removes the undirected edge between src and dest. Throws an exception if there is invalide index.
     void Graph::removeEdge(int src, int dest) {
@@ -100,6 +136,7 @@ namespace graph {
         removeNeighbor(dest, src);
     }
     void Graph::print_graph() const {
+        
         for (int i = 0; i < V; i++) {
             cout << "Vertex " << nodes[i].number << " : ";
             Neighbor* current = nodes[i].adjList;
