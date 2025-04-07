@@ -32,6 +32,35 @@ CPP_EX1_25/
 
 ---
 
+##  How to Run the Project
+
+### 1. Build the project
+```bash
+make
+```
+
+### 2. Run the demo executable
+```bash
+./prog
+```
+
+Or simply:
+```bash
+make run
+```
+
+### 3. Run unit tests
+```bash
+make test
+```
+
+### 4. Check memory with Valgrind
+```bash
+make valgrind
+```
+
+---
+
 ##   Graph Class Design
 
 - The `Graph` is initialized with a fixed number of vertices `x`.

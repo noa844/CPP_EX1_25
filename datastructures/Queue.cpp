@@ -1,3 +1,4 @@
+//noa.honigstein@gmail.com
 #include "Queue.hpp"
 #include <stdexcept>
 using std::runtime_error;

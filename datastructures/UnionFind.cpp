@@ -1,3 +1,4 @@
+//noa.honigstein@gmail.com
 #include "UnionFind.hpp"
 #include <stdexcept>
 using std::runtime_error;

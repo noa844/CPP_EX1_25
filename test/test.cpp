@@ -1,3 +1,4 @@
+//noa.honigstein@gmail.com
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
 
@@ -57,7 +58,7 @@ bool compareGraphs(const Graph& g1, const Graph& g2) {
 }
 
 
-
+// --- Testing that algorithms return correct results ---
 TEST_CASE("BFS tree from vertex 0") {
     Graph g(5);
     g.addEdge(0, 1, 1);
@@ -159,6 +160,7 @@ TEST_CASE("Check if graph is connected") {
 }
 
 
+// --- Testing that exceptions are correctly thrown when input is invalid ---
 TEST_CASE("BFS throws on invalid start index") {
     Graph g(3);
     g.addEdge(0, 1, 1);

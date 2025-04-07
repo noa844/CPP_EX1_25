@@ -1,3 +1,4 @@
+//noa.honigstein@gmail.com
 #include "src/Graph/Graph.hpp"
 #include "src/Algorithms.hpp"
 
