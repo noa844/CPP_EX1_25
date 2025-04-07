@@ -195,7 +195,10 @@ namespace graph {
         return sPT;
 
     }
-
+    
+    // Prim's algorithm here starts from a random vertex,
+    // so on graphs with identical weights, the resulting MST may vary between executions.
+    // However, in such cases, all MSTs will be structurally valid and equivalent in cost.
     Graph Algorithms::prim(const Graph &g) {
         int n = g.getSize();
 

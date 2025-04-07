@@ -157,6 +157,8 @@ TEST_CASE("Check if graph is connected") {
     disconnected.addEdge(2, 3, 1);
     CHECK_FALSE(algo.isConnected(disconnected));
 }
+
+
 TEST_CASE("BFS throws on invalid start index") {
     Graph g(3);
     g.addEdge(0, 1, 1);
