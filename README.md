@@ -11,3 +11,5 @@ https://www.hackerearth.com/practice/algorithms/graphs/minimum-spanning-tree/tut
 
 pour chaque algo-input output
 kruskal demande un graph connecter parceque ils ont dit comme prim et lui il rend un arbre et non une foret
+
+prims est en random

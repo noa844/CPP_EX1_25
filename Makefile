@@ -9,7 +9,7 @@ SRC = main.cpp $(wildcard src/Graph/*.cpp) $(wildcard src/*.cpp) $(wildcard data
 EXEC = prog
 
 # Source files for unit tests (if any; adjust path/file names accordingly)
-TESTSRC = tests/test.cpp $(wildcard src/Graph/*.cpp) $(wildcard src/*.cpp) $(wildcard datastructures/*.cpp)
+TESTSRC = test/test.cpp $(wildcard src/Graph/*.cpp) $(wildcard src/*.cpp) $(wildcard datastructures/*.cpp)
 
 TEST_EXEC = test_prog
 
