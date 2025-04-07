@@ -116,7 +116,6 @@ namespace graph {
         // First loop: from the starting vertex to the end.
         for (int i = start; i < n; i++) {
             if (!visited[i]) {
-                cout << "Launching dfsTree from vertex " << i << endl;
                 dfsTree(g, i, visited, forest, n);
             }
         }
@@ -124,7 +123,6 @@ namespace graph {
         // Second loop: from the beginning to the starting vertex.
         for (int i = 0; i < start; i++) {
             if (!visited[i]) {
-                cout <<"i visit now" << visited[i] << endl; 
                 dfsTree(g, i, visited, forest, n);
             }
         }
@@ -199,7 +197,12 @@ namespace graph {
     }
 
     Graph Algorithms::prim(const Graph &g) {
-        
+        int n = g.getSize();
+
+        if(n == 0) {
+            throw runtime_error("Graph is empty");
+        }
+
         if (!isConnected(g)) {
             throw  runtime_error("Graph is not connected. Prim algorithm requires a connected graph.");
         }
@@ -207,11 +210,6 @@ namespace graph {
             throw runtime_error("Negative weight isn't allowed in graph");
         }
 
-        int n = g.getSize();
-
-        if(n == 0) {
-            throw runtime_error("Graph is empty");
-        }
 
         int* key = new int[n];   // Stores the minimum weight to connect each vertex to the growing MST
         int* previous = new int[n];  // Stores the parent of each vertex in the MST
@@ -226,7 +224,7 @@ namespace graph {
 
          // Choose a random starting vertex.
          int start = rand() % n;
-         cout << "start vertex: "<< start << endl;
+         
          PriorityQueue pqueue(n);
          pqueue.insert(start, 0);
 
@@ -269,13 +267,16 @@ namespace graph {
 
 
     Graph Algorithms::kruskal(const Graph &g) {
-        if (!isConnected(g)) {
-            throw  runtime_error("Graph is not connected. This kruskal algorithm requires a connected graph.");
-        }
+
         int n = g.getSize();
         if(n == 0) {
             throw runtime_error("Graph is empty");
         }
+
+        if (!isConnected(g)) {
+            throw  runtime_error("Graph is not connected. This kruskal algorithm requires a connected graph.");
+        }
+        
         if (g.hasNegativeEdge()) {
             throw runtime_error("Negative weight isn't allowed in graph");
         }

@@ -8,7 +8,7 @@ SRC = main.cpp $(wildcard src/Graph/*.cpp) $(wildcard src/*.cpp) $(wildcard data
 # Name of the main executable
 EXEC = prog
 
-# Source files for unit tests (if any; adjust path/file names accordingly)
+# Source files for unit tests 
 TESTSRC = test/test.cpp $(wildcard src/Graph/*.cpp) $(wildcard src/*.cpp) $(wildcard datastructures/*.cpp)
 
 TEST_EXEC = test_prog
@@ -20,8 +20,8 @@ all: $(EXEC)
 $(EXEC): $(SRC)
 	$(CXX) $(CXXFLAGS) -o $@ $(SRC)
 
-# Run the demonstration (Main)
-Main: $(EXEC)
+# Run the demonstration (make run)
+run: $(EXEC)
 	./$(EXEC)
 
 # Build the unit test executable

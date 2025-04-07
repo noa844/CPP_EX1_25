@@ -12,4 +12,6 @@ https://www.hackerearth.com/practice/algorithms/graphs/minimum-spanning-tree/tut
 pour chaque algo-input output
 kruskal demande un graph connecter parceque ils ont dit comme prim et lui il rend un arbre et non une foret
 
-prims est en random
+prims est en random si poids unique,ca marche tjr,si poid identique ca change de resultat
+
+aucun algo marche sur un graph vide

@@ -121,10 +121,22 @@ namespace graph {
         if (!isValidIndex(src) || !isValidIndex(dest)) {
             throw runtime_error("Invalid index");
         }
+            // Check if an edge already exists between src and dest.
+        try {
+            // Try to get the current weight of the edge.
+            int existingWeight = getWeight(src, dest);
+            // If no exception is thrown, the edge exists.
+            // Remove the existing edge from both directions.
+            removeNeighbor(src, dest);
+            removeNeighbor(dest, src);
+        } catch (const runtime_error &e) {
+            // If an exception is caught, the edge does not exist.
+            // Do nothing.
+        }
         //undirected edge.
         addNeighbor(src, dest, weight);
         addNeighbor(dest, src, weight);
-        cout << "addEdge: " << src << " <-> " << dest << " (weight: " << weight << ")" << endl;
+      
 
     }
     // Removes the undirected edge between src and dest. Throws an exception if there is invalide index.
@@ -136,12 +148,12 @@ namespace graph {
         removeNeighbor(dest, src);
     }
     void Graph::print_graph() const {
-        
+        cout<<"Graph: (vertex, weight)"<<endl;
         for (int i = 0; i < V; i++) {
-            cout << "Vertex " << nodes[i].number << " : ";
+            cout << "Vertex " << nodes[i].number<< "<->";
             Neighbor* current = nodes[i].adjList;
             while (current != nullptr) {
-                cout << "(connected to vertex: " << current->dest << ", weight: " << current->weight << ") ";
+                cout << "(" << current->dest << ", " << current->weight << ") ";
                 current = current->next;
             }
             cout << endl;
